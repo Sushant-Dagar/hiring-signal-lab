@@ -1,0 +1,277 @@
+{
+  "data": {
+    "raw_rows": 13389,
+    "too_short": 12,
+    "duplicate_rows": 1455,
+    "conflicting_label_groups": 169,
+    "kept_rows": 11922,
+    "train": 8345,
+    "val": 1788,
+    "test": 1789,
+    "roles": 43
+  },
+  "models": {
+    "TF-IDF + Logistic Regression": {
+      "ndcg@10": 0.972662448425509,
+      "p@10": 0.9604651162790698,
+      "mrr": 0.9883720930232558,
+      "map": 0.8662858083856954,
+      "accuracy": 0.8194522079373951,
+      "macro_f1": 0.8192036615044871,
+      "top3_accuracy": 0.9239798770262717
+    },
+    "PyTorch MLP on TF-IDF": {
+      "ndcg@10": 0.9704777762811824,
+      "p@10": 0.9558139534883722,
+      "mrr": 1.0,
+      "map": 0.8396784838534597,
+      "accuracy": 0.7870318613750699,
+      "macro_f1": 0.7857127920113829,
+      "top3_accuracy": 0.902738960313024
+    },
+    "PyTorch EmbeddingBag network": {
+      "ndcg@10": 0.9557210587199098,
+      "p@10": 0.9395348837209302,
+      "mrr": 1.0,
+      "map": 0.773376957242547,
+      "accuracy": 0.7076579094466182,
+      "macro_f1": 0.7086757117176411,
+      "top3_accuracy": 0.8423700391280045
+    }
+  },
+  "mlp_best_epoch": 5,
+  "bag_best_epoch": 12,
+  "title_word_ablation": {
+    "full_text": {
+      "ndcg@10": 0.972662448425509,
+      "p@10": 0.9604651162790698,
+      "mrr": 0.9883720930232558,
+      "map": 0.8662858083856954,
+      "accuracy": 0.8194522079373951,
+      "macro_f1": 0.8192036615044871,
+      "top3_accuracy": 0.9239798770262717
+    },
+    "title_words_removed": {
+      "ndcg@10": 0.9554574797081387,
+      "p@10": 0.9418604651162791,
+      "mrr": 0.9883720930232558,
+      "map": 0.7896111345242228,
+      "accuracy": 0.742873113471213,
+      "macro_f1": 0.7423770850387258,
+      "top3_accuracy": 0.8764673001676915
+    }
+  },
+  "top_confused_pairs": [
+    {
+      "a": "Automobile",
+      "b": "Sales",
+      "n": 7
+    },
+    {
+      "a": "Business Analyst",
+      "b": "Management",
+      "n": 6
+    },
+    {
+      "a": "Education",
+      "b": "Management",
+      "n": 6
+    },
+    {
+      "a": "Accountant",
+      "b": "Finance",
+      "n": 5
+    },
+    {
+      "a": "Arts",
+      "b": "Designing",
+      "n": 5
+    },
+    {
+      "a": "Advocate",
+      "b": "Management",
+      "n": 4
+    },
+    {
+      "a": "Automobile",
+      "b": "Mechanical Engineer",
+      "n": 4
+    },
+    {
+      "a": "Banking",
+      "b": "Management",
+      "n": 4
+    },
+    {
+      "a": "Database",
+      "b": "SQL Developer",
+      "n": 4
+    },
+    {
+      "a": "Designing",
+      "b": "Web Designing",
+      "n": 4
+    }
+  ],
+  "weakest_roles": [
+    {
+      "role": "Management",
+      "ap": 0.2968111100274049,
+      "ndcg@10": 0.6898286563534622,
+      "n_test": 48
+    },
+    {
+      "role": "React Developer",
+      "ap": 0.6843363483353183,
+      "ndcg@10": 0.77990823370192,
+      "n_test": 16
+    },
+    {
+      "role": "Designing",
+      "ap": 0.7149927833541232,
+      "ndcg@10": 0.8669479898642711,
+      "n_test": 35
+    },
+    {
+      "role": "Web Designing",
+      "ap": 0.7225811464135898,
+      "ndcg@10": 0.9148568823583791,
+      "n_test": 41
+    },
+    {
+      "role": "BPO",
+      "ap": 0.7422900116350506,
+      "ndcg@10": 1.0,
+      "n_test": 29
+    },
+    {
+      "role": "Sales",
+      "ap": 0.7566290779048909,
+      "ndcg@10": 1.0,
+      "n_test": 52
+    }
+  ],
+  "ab_test_lr_vs_mlp": {
+    "accuracy_a": 0.8194522079373951,
+    "accuracy_b": 0.7870318613750699,
+    "accuracy_diff": {
+      "mean": 0.03242034656232532,
+      "ci95": [
+        0.021799888205701508,
+        0.043040804918949134
+      ]
+    },
+    "mcnemar": {
+      "a_right_b_wrong": 75,
+      "b_right_a_wrong": 17,
+      "p_value": 7.292898576420455e-10
+    },
+    "ap_per_role": {
+      "mean_diff": 0.02660732453223584,
+      "ci95": [
+        0.01668439096199814,
+        0.03817247321724097
+      ],
+      "a_better_roles": 41,
+      "b_better_roles": 2,
+      "wilcoxon_p": 2.570709511928726e-08
+    },
+    "ndcg@10_per_role": {
+      "mean_diff": 0.0021846721443267185,
+      "ci95": [
+        -0.006572398788016273,
+        0.01184171947151421
+      ],
+      "a_better_roles": 5,
+      "b_better_roles": 7,
+      "wilcoxon_p": 0.92333984375
+    },
+    "power": {
+      "discordance_rate": 0.05142537730575741,
+      "n_needed_for_1pp": 4034,
+      "n_needed_for_2pp": 1007,
+      "n_test": 1789
+    }
+  },
+  "causal": {
+    "single_study": {
+      "n": 1789,
+      "treated_share": 0.3789826718837339,
+      "true_ate": 0.10427750934731785,
+      "smd_before": [
+        1.326944198160929,
+        0.11738573120495853
+      ],
+      "smd_after_ipw": [
+        -0.033522436798431116,
+        -0.016806984102412544
+      ],
+      "estimates": {
+        "Naive difference": {
+          "estimate": 0.4226586375451705,
+          "ci95": [
+            0.3789002126279021,
+            0.4644217388395673
+          ]
+        },
+        "Outcome regression (g-computation)": {
+          "estimate": 0.13076194099218313,
+          "ci95": [
+            0.08079784660295136,
+            0.1781951701667951
+          ]
+        },
+        "Inverse propensity weighting": {
+          "estimate": 0.13989184876652355,
+          "ci95": [
+            0.074659042587085,
+            0.20573410216329435
+          ]
+        },
+        "Doubly robust (AIPW)": {
+          "estimate": 0.1485423122935141,
+          "ci95": [
+            0.08706992911832129,
+            0.2220267793275964
+          ]
+        }
+      }
+    },
+    "repeated": {
+      "n_sims": 300,
+      "nonlinear": 0.0,
+      "bias": {
+        "Naive difference": 0.3077142444971243,
+        "Outcome regression (g-computation)": -0.0015965264664743704,
+        "Inverse propensity weighting": -0.0007418237397068863,
+        "Doubly robust (AIPW)": -0.0015614481062775516
+      },
+      "rmse": {
+        "Naive difference": 0.30846288160565777,
+        "Outcome regression (g-computation)": 0.02373640913330668,
+        "Inverse propensity weighting": 0.030594163616373366,
+        "Doubly robust (AIPW)": 0.02811783486596041
+      },
+      "aipw_ci_coverage": 0.9433333333333334
+    },
+    "repeated_misspecified_outcome": {
+      "n_sims": 300,
+      "nonlinear": 1.5,
+      "bias": {
+        "Naive difference": 0.3887132355640867,
+        "Outcome regression (g-computation)": 0.0015563672539052557,
+        "Inverse propensity weighting": -0.001074363890654055,
+        "Doubly robust (AIPW)": -0.00190453944675637
+      },
+      "rmse": {
+        "Naive difference": 0.3892194475430005,
+        "Outcome regression (g-computation)": 0.01802975255993224,
+        "Inverse propensity weighting": 0.023952245344566015,
+        "Doubly robust (AIPW)": 0.021655631625539046
+      },
+      "aipw_ci_coverage": 0.9666666666666667
+    }
+  },
+  "runtime_s": 563.3,
+  "quick": false
+}

@@ -1,0 +1,41 @@
+Data: {'raw_rows': 13389, 'too_short': 12, 'duplicate_rows': 1455, 'conflicting_label_groups': 169, 'kept_rows': 11922}  |  train 8345  val 1788  test 1789  roles 43
+Training TF-IDF + Logistic Regression ...
+Training PyTorch MLP on TF-IDF ...
+  epoch  1  loss 3.3155  val macro-F1 0.6142  (25.2s)
+  epoch  2  loss 1.8913  val macro-F1 0.7195  (23.2s)
+  epoch  3  loss 1.2129  val macro-F1 0.7680  (24.0s)
+  epoch  4  loss 0.8863  val macro-F1 0.7746  (23.1s)
+  epoch  5  loss 0.7021  val macro-F1 0.7921  (23.4s)
+  epoch  6  loss 0.6088  val macro-F1 0.7877  (22.5s)
+  epoch  7  loss 0.5504  val macro-F1 0.7917  (23.7s)
+  epoch  8  loss 0.5232  val macro-F1 0.7878  (22.9s)
+  epoch  9  loss 0.5101  val macro-F1 0.7872  (23.7s)
+  early stop: best val macro-F1 0.7921
+Training PyTorch EmbeddingBag network ...
+  epoch  1  loss 3.4834  val macro-F1 0.3014  (10.1s)
+  epoch  2  loss 2.1571  val macro-F1 0.5403  (10.0s)
+  epoch  3  loss 1.3264  val macro-F1 0.6545  (9.9s)
+  epoch  4  loss 0.7585  val macro-F1 0.6868  (10.0s)
+  epoch  5  loss 0.4068  val macro-F1 0.6905  (10.2s)
+  epoch  6  loss 0.2186  val macro-F1 0.6980  (10.2s)
+  epoch  7  loss 0.1165  val macro-F1 0.6968  (10.3s)
+  epoch  8  loss 0.0668  val macro-F1 0.6978  (9.8s)
+  epoch  9  loss 0.0429  val macro-F1 0.6948  (9.4s)
+  epoch 10  loss 0.0307  val macro-F1 0.7006  (10.0s)
+  epoch 11  loss 0.0239  val macro-F1 0.6951  (11.2s)
+  epoch 12  loss 0.0221  val macro-F1 0.7042  (10.7s)
+  epoch 13  loss 0.0142  val macro-F1 0.7027  (16.2s)
+  epoch 14  loss 0.0144  val macro-F1 0.6997  (14.5s)
+  epoch 15  loss 0.0142  val macro-F1 0.6973  (16.2s)
+  epoch 16  loss 0.0102  val macro-F1 0.6972  (15.3s)
+  early stop: best val macro-F1 0.7042
+  TF-IDF + Logistic Regression     acc 0.819  macro-F1 0.819  MAP 0.866  NDCG@10 0.973
+  PyTorch MLP on TF-IDF            acc 0.787  macro-F1 0.786  MAP 0.840  NDCG@10 0.970
+  PyTorch EmbeddingBag network     acc 0.708  macro-F1 0.709  MAP 0.773  NDCG@10 0.956
+Title-word ablation: retraining the baseline with every role-name word removed ...
+  accuracy 0.819 -> 0.743
+A/B test: Logistic Regression (A) vs PyTorch MLP (B) on the same test resumes ...
+  accuracy diff +0.0324  CI [0.021799888205701508, 0.043040804918949134]  McNemar p=7.3e-10
+Causal study on the semi-synthetic funnel ...
+  true ATE 0.104  naive 0.423  AIPW 0.149  coverage 0.94
+Done in 563.3 s -> reports/metrics.json, reports/figures/
